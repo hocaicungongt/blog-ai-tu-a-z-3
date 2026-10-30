@@ -42,7 +42,22 @@ img{display:block;max-width:100%;height:auto}
 .skip-link{background:var(--surface);color:var(--text);z-index:20}
 @media(max-width:700px){.post{grid-template-columns:minmax(0,1fr);padding:18px;gap:20px}.post-art{min-height:160px}.section-heading{flex-wrap:wrap}.reading-view{padding-top:20px}html{scroll-padding-top:105px}}
 @media(prefers-color-scheme:dark){
-  :root{--green:#89b7ff;--muted:#adbdd3;--line:#30425b;--page:#111c2d;--surface:#1b2a40;--text:#e5edf9;--soft:#243b5c;--shadow:0 5px 22px rgb(0 0 0 / 16%)}
-  .art-notes{background:#2d3557;color:#b6c6ff}
-  .sun{color:#5689d0}
+  :root:not([data-theme]){color-scheme:dark;--green:#89b7ff;--muted:#adbdd3;--line:#30425b;--page:#111c2d;--surface:#1b2a40;--text:#e5edf9;--soft:#243b5c;--shadow:0 5px 22px rgb(0 0 0 / 16%)}
+  :root:not([data-theme]) .art-notes{background:#2d3557;color:#b6c6ff}
+  :root:not([data-theme]) .sun{color:#5689d0}
 }
+
+:root[data-theme="light"]{color-scheme:light}
+:root[data-theme="dark"]{color-scheme:dark;--green:#89b7ff;--muted:#adbdd3;--line:#30425b;--page:#111c2d;--surface:#1b2a40;--text:#e5edf9;--soft:#243b5c;--shadow:0 5px 22px rgb(0 0 0 / 16%)}
+[data-theme="dark"] .art-notes{background:#2d3557;color:#b6c6ff}
+[data-theme="dark"] .sun{color:#5689d0}
+:root[data-theme="paper"]{color-scheme:light;--green:#a34724;--muted:#78604b;--line:#d9c8aa;--page:#f4ead5;--surface:#fcf3e2;--text:#422e20;--soft:#edddbf;--shadow:0 5px 22px rgb(88 56 26 / 7%)}
+[data-theme="paper"] h1,[data-theme="paper"] h2,[data-theme="paper"] h3{font-family:'Lora',Georgia,serif}
+[data-theme="paper"] .art-notes{background:#ead8b8;color:var(--green)}
+[data-theme="paper"] .sun{color:#b66539}
+.theme-control{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0}
+#theme-toggle{font:inherit;font-size:12px;font-weight:600;color:var(--green);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 12px;cursor:pointer}
+#theme-toggle:hover{background:var(--soft)}
+#theme-toggle:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+#theme-status{font-size:10px;color:var(--muted)}
+@media(max-width:700px){.site-header{flex-wrap:wrap;padding-block:14px;gap:12px}.site-header nav{margin-left:auto}.theme-control{flex-direction:row;gap:10px;width:100%}html{scroll-padding-top:165px}}

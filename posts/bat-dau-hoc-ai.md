@@ -1,5 +1,5 @@
 ---
-title: Bắt đầu học AI từ những điều gần gũi
+title: Ngày đầu mình học AI
 date: 2026-10-20
 excerpt: Không cần biết lập trình ngay từ đầu. Hãy tìm hiểu AI qua một việc nhỏ bạn vẫn làm mỗi ngày.
 ---
@@ -24,3 +24,5 @@ Bạn không cần hiểu hết mọi thuật toán trong ngày đầu tiên. M�
 AI có thể đưa ra câu trả lời nghe rất tự tin nhưng vẫn sai. Học cách kiểm tra kết quả cũng quan trọng như học cách đặt câu hỏi.
 
 > Mục tiêu hôm nay là hiểu thêm một chút, chưa cần làm được mọi thứ.
+
+Cập nhật: Mình đang giữ thói quen học AI bằng một bài tập nhỏ mỗi ngày. Ghi lại điều đã hiểu và tự kiểm tra kết quả giúp mình thấy tiến bộ rõ hơn.
