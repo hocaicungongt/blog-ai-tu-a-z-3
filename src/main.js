@@ -1,6 +1,28 @@
 import './style.css';
 import { marked } from 'marked';
 
+const themeNames = { light: 'Sáng', dark: 'Tối', paper: 'Giấy cũ' };
+const themeOrder = Object.keys(themeNames);
+const themeButton = document.querySelector('.theme-toggle');
+let selectedTheme = null;
+try {
+  const savedTheme = localStorage.getItem('theme');
+  if (themeOrder.includes(savedTheme)) selectedTheme = savedTheme;
+} catch {
+  // Theme switching still works when browser storage is unavailable.
+}
+function applyTheme() {
+  if (selectedTheme) document.documentElement.dataset.theme = selectedTheme;
+  themeButton.title = `Giao diện: ${themeNames[selectedTheme] || 'Theo máy'}`;
+  themeButton.setAttribute('aria-label', `Đổi giao diện. Hiện tại: ${themeNames[selectedTheme] || 'Theo máy'}`);
+}
+applyTheme();
+themeButton.addEventListener('click', () => {
+  selectedTheme = themeOrder[(themeOrder.indexOf(selectedTheme) + 1) % themeOrder.length];
+  applyTheme();
+  try { localStorage.setItem('theme', selectedTheme); } catch { /* Keep the selection for this visit. */ }
+});
+
 document.querySelector('#year').textContent = new Date().getFullYear();
 
 const files = import.meta.glob('../posts/*.md', {

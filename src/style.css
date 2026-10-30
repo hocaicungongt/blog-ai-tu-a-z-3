@@ -42,7 +42,19 @@ img{display:block;max-width:100%;height:auto}
 .skip-link{background:var(--surface);color:var(--text);z-index:20}
 @media(max-width:700px){.post{grid-template-columns:minmax(0,1fr);padding:18px;gap:20px}.post-art{min-height:160px}.section-heading{flex-wrap:wrap}.reading-view{padding-top:20px}html{scroll-padding-top:105px}}
 @media(prefers-color-scheme:dark){
-  :root{--green:#89b7ff;--muted:#adbdd3;--line:#30425b;--page:#111c2d;--surface:#1b2a40;--text:#e5edf9;--soft:#243b5c;--shadow:0 5px 22px rgb(0 0 0 / 16%)}
-  .art-notes{background:#2d3557;color:#b6c6ff}
-  .sun{color:#5689d0}
+  :root:not([data-theme]){color-scheme:dark;--green:#89b7ff;--muted:#adbdd3;--line:#30425b;--page:#111c2d;--surface:#1b2a40;--text:#e5edf9;--soft:#243b5c;--shadow:0 5px 22px rgb(0 0 0 / 16%)}
+  :root:not([data-theme]) .art-notes{background:#2d3557;color:#b6c6ff}
+  :root:not([data-theme]) .sun{color:#5689d0}
 }
+:root[data-theme="light"]{color-scheme:light}
+:root[data-theme="dark"]{color-scheme:dark;--green:#89b7ff;--muted:#adbdd3;--line:#30425b;--page:#111c2d;--surface:#1b2a40;--text:#e5edf9;--soft:#243b5c;--shadow:0 5px 22px rgb(0 0 0 / 16%)}
+:root[data-theme="dark"] .art-notes{background:#2d3557;color:#b6c6ff}
+:root[data-theme="dark"] .sun{color:#5689d0}
+:root[data-theme="paper"]{color-scheme:light;--green:#a44723;--muted:#78604a;--line:#dbc8a9;--page:#f5ecd8;--surface:#fcf4e4;--text:#432f23;--soft:#efdfc3;--shadow:0 5px 22px rgb(83 52 28 / 7%)}
+:root[data-theme="paper"] .art-notes{background:#ead8b9;color:#895133}
+:root[data-theme="paper"] .sun{color:#b86336}
+:root[data-theme="paper"] :is(h1,h2,h3){font-family:'Lora',Georgia,serif}
+.theme-toggle{flex-shrink:0;font:inherit;font-size:12px;font-weight:600;padding:9px 13px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--green);cursor:pointer}
+.theme-toggle:hover{background:var(--soft)}
+.theme-toggle:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+@media(max-width:700px){.site-header{flex-wrap:wrap;padding-block:14px;gap:12px}.theme-toggle{margin-left:auto}html{scroll-padding-top:150px}}
