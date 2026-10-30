@@ -11,7 +11,7 @@
 .read-link,.back-link{display:inline-block;margin-top:16px;color:var(--green);font-size:13px;font-weight:600}.post-copy h3 a:hover,.read-link:hover,.back-link:hover{text-decoration:underline;text-underline-offset:5px}.reading-view{max-width:740px;margin:0 auto;padding:32px 0 64px}.reading-view article>header{margin-top:36px;border-bottom:1px solid var(--line);padding-bottom:24px}.reading-view h1{font-size:clamp(30px,5vw,46px);overflow-wrap:anywhere}.reading-view h1:focus{outline:none}.reading-excerpt{color:var(--muted);font-size:16px}.markdown-body{font-size:16px;line-height:1.95;padding-top:16px;overflow-wrap:anywhere}.markdown-body h2{font-family:'Lora',Georgia,serif;font-size:26px;line-height:1.4;margin-top:32px}.markdown-body h3{font-size:22px}.markdown-body ul,.markdown-body ol{padding-left:24px}.markdown-body li+li{margin-top:8px}.markdown-body blockquote{border-left:3px solid #a8b59c;margin:24px 0;padding:4px 20px;color:var(--green)}.markdown-body pre{overflow:auto;background:#eceee5;border-radius:6px;padding:20px;font-size:14px;line-height:1.7}.markdown-body code{font-family:Consolas,monospace}.markdown-body img{max-width:100%;height:auto}.markdown-body a{color:var(--green);text-decoration:underline}
 
 /* Blue palette and surfaces shared by both system themes. */
-:root{color-scheme:light dark;--green:#2463c7;--muted:#63748b;--line:#dce5f0;--page:#f5f8fd;--surface:#fff;--text:#24344b;--soft:#eaf2ff;--shadow:0 5px 22px rgb(29 65 115 / 7%);color:var(--text);background:var(--page)}
+:root{color-scheme:light;--green:#2463c7;--muted:#63748b;--line:#dce5f0;--page:#f5f8fd;--surface:#fff;--text:#24344b;--soft:#eaf2ff;--shadow:0 5px 22px rgb(29 65 115 / 7%);color:var(--text);background:var(--page)}
 html{scroll-padding-top:130px}
 .site-header{position:sticky;top:0;z-index:10;background:var(--page);box-shadow:0 8px 16px -16px rgb(29 65 115 / 30%)}
 .brand-mark{border-color:var(--line);background:var(--surface)}
@@ -42,7 +42,21 @@ img{display:block;max-width:100%;height:auto}
 .skip-link{background:var(--surface);color:var(--text);z-index:20}
 @media(max-width:700px){.post{grid-template-columns:minmax(0,1fr);padding:18px;gap:20px}.post-art{min-height:160px}.section-heading{flex-wrap:wrap}.reading-view{padding-top:20px}html{scroll-padding-top:105px}}
 @media(prefers-color-scheme:dark){
-  :root{--green:#89b7ff;--muted:#adbdd3;--line:#30425b;--page:#111c2d;--surface:#1b2a40;--text:#e5edf9;--soft:#243b5c;--shadow:0 5px 22px rgb(0 0 0 / 16%)}
-  .art-notes{background:#2d3557;color:#b6c6ff}
-  .sun{color:#5689d0}
+  :root:not([data-theme]){color-scheme:dark;--green:#89b7ff;--muted:#adbdd3;--line:#30425b;--page:#111c2d;--surface:#1b2a40;--text:#e5edf9;--soft:#243b5c;--shadow:0 5px 22px rgb(0 0 0 / 16%)}
+  :root:not([data-theme]) .art-notes{background:#2d3557;color:#b6c6ff}
+  :root:not([data-theme]) .sun{color:#5689d0}
 }
+
+/* Explicit choices override the system preference. */
+:root[data-theme="dark"]{color-scheme:dark;--green:#89b7ff;--muted:#adbdd3;--line:#30425b;--page:#111c2d;--surface:#1b2a40;--text:#e5edf9;--soft:#243b5c;--shadow:0 5px 22px rgb(0 0 0 / 16%)}
+:root[data-theme="dark"] .art-notes{background:#2d3557;color:#b6c6ff}
+:root[data-theme="dark"] .sun{color:#5689d0}
+:root[data-theme="paper"]{color-scheme:light;--green:#a54820;--muted:#75604a;--line:#ddc9a8;--page:#f5ecd9;--surface:#fff7e7;--text:#3e2c20;--soft:#eedcbb;--shadow:0 5px 22px rgb(89 58 26 / 8%)}
+:root[data-theme="paper"] :is(h1,h2,h3){font-family:'Lora',Georgia,serif}
+:root[data-theme="paper"] .art-notes{background:#ead2af;color:#91431f}
+:root[data-theme="paper"] .sun{color:#bd7040}
+.theme-toggle{font:inherit;font-size:12px;line-height:1.5;cursor:pointer;padding:9px 13px;border:1px solid var(--green);border-radius:8px;color:var(--green);background:var(--surface);white-space:nowrap}
+.theme-toggle:hover{background:var(--soft)}
+.theme-toggle:focus-visible{outline:2px solid var(--green);outline-offset:4px}
+.theme-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:700px){.site-header{flex-wrap:wrap;padding-block:14px;gap:12px}.site-header nav{margin-left:auto}.theme-toggle{margin-left:auto}html{scroll-padding-top:160px}}

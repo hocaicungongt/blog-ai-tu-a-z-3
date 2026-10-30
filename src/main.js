@@ -1,6 +1,24 @@
 import './style.css';
 import { marked } from 'marked';
 
+const themes = ['light', 'dark', 'paper'];
+const themeNames = { light: 'Sáng', dark: 'Tối', paper: 'Giấy cũ' };
+const themeButton = document.querySelector('.theme-toggle');
+const themeStatus = document.querySelector('.theme-status');
+function updateThemeLabel() {
+  const name = themeNames[document.documentElement.dataset.theme] || 'Theo máy';
+  themeStatus.textContent = 'Giao diện: ' + name;
+  themeButton.title = 'Giao diện hiện tại: ' + name;
+}
+updateThemeLabel();
+themeButton.addEventListener('click', () => {
+  const current = document.documentElement.dataset.theme;
+  const next = themes[(themes.indexOf(current) + 1) % themes.length];
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem('theme', next); } catch {}
+  updateThemeLabel();
+});
+
 document.querySelector('#year').textContent = new Date().getFullYear();
 
 const files = import.meta.glob('../posts/*.md', {
