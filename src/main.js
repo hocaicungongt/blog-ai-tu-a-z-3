@@ -3,24 +3,6 @@ import { marked } from 'marked';
 
 document.querySelector('#year').textContent = new Date().getFullYear();
 
-const themes = ['light', 'dark', 'paper'];
-const themeNames = { light: 'Sáng', dark: 'Tối', paper: 'Giấy cũ' };
-const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
-const themeStatus = document.querySelector('#theme-status');
-function updateThemeStatus() {
-  const selected = document.documentElement.dataset.theme;
-  themeStatus.textContent = selected ? themeNames[selected] : `Theo máy: ${systemTheme.matches ? 'Tối' : 'Sáng'}`;
-}
-document.querySelector('#theme-toggle').addEventListener('click', () => {
-  const current = themes.indexOf(document.documentElement.dataset.theme);
-  const next = themes[(current + 1) % themes.length];
-  document.documentElement.dataset.theme = next;
-  try { localStorage.setItem('theme', next); } catch {}
-  updateThemeStatus();
-});
-systemTheme.addEventListener('change', updateThemeStatus);
-updateThemeStatus();
-
 const files = import.meta.glob('../posts/*.md', {
   query: '?raw',
   import: 'default',
