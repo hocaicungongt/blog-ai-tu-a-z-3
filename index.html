@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Góc nhỏ của mình — lưu lại những câu chuyện đời thường, điều đã học và niềm vui giản dị." />
     <meta name="theme-color" content="#faf8f3" />
+    <script>
+      try {
+        const theme = localStorage.getItem('theme');
+        if (['light', 'dark', 'paper'].includes(theme)) document.documentElement.dataset.theme = theme;
+      } catch {}
+    </script>
     <title>Góc nhỏ của mình</title>
   </head>
   <body>
@@ -12,6 +18,7 @@
     <header class="site-header wrap">
       <a class="brand" href="./" aria-label="Góc nhỏ của mình — trang chủ"><span class="brand-mark" aria-hidden="true">g.</span> Góc nhỏ của mình</a>
       <nav aria-label="Điều hướng chính"><a href="#bai-viet">Bài viết</a><a href="#gioi-thieu">Về mình</a></nav>
+      <button class="theme-toggle" type="button">Đổi giao diện</button>
     </header>
     <main id="noi-dung" class="wrap">
       <section class="intro" id="gioi-thieu" aria-labelledby="intro-title">
