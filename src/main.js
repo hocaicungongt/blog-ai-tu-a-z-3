@@ -1,22 +1,6 @@
 import './style.css';
 import { marked } from 'marked';
 
-const themeButton = document.querySelector('.theme-toggle');
-const themes = ['light', 'dark', 'paper'];
-const themeNames = { light: 'Sáng', dark: 'Tối', paper: 'Giấy cũ' };
-function updateThemeLabel() {
-  const theme = document.documentElement.dataset.theme;
-  themeButton.title = `Giao diện hiện tại: ${themeNames[theme] || 'Theo máy'}`;
-  themeButton.setAttribute('aria-label', `Đổi giao diện. ${themeButton.title}`);
-}
-updateThemeLabel();
-themeButton.addEventListener('click', () => {
-  const theme = themes[(themes.indexOf(document.documentElement.dataset.theme) + 1) % themes.length];
-  document.documentElement.dataset.theme = theme;
-  try { localStorage.setItem('theme', theme); } catch {}
-  updateThemeLabel();
-});
-
 document.querySelector('#year').textContent = new Date().getFullYear();
 
 const files = import.meta.glob('../posts/*.md', {
