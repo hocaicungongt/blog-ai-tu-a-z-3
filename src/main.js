@@ -1,31 +1,6 @@
 import './style.css';
 import { marked } from 'marked';
 
-const themes = ['light', 'dark', 'paper'];
-const themeNames = { light: 'Sáng', dark: 'Tối', paper: 'Giấy cũ' };
-let selectedTheme = null;
-try {
-  const saved = localStorage.getItem('blog-theme');
-  if (themes.includes(saved)) selectedTheme = saved;
-} catch { /* Keep the switch usable when storage is unavailable. */ }
-const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
-function applyTheme() {
-  if (selectedTheme) document.documentElement.dataset.theme = selectedTheme;
-  else delete document.documentElement.dataset.theme;
-  const current = selectedTheme || (systemTheme.matches ? 'dark' : 'light');
-  document.querySelector('#theme-status').textContent = themeNames[current];
-  document.querySelector('meta[name="theme-color"]').content = {
-    light: '#f5f8fd', dark: '#111c2d', paper: '#f5ecd9',
-  }[current];
-}
-document.querySelector('#theme-toggle').addEventListener('click', () => {
-  selectedTheme = themes[(themes.indexOf(selectedTheme) + 1) % themes.length];
-  try { localStorage.setItem('blog-theme', selectedTheme); } catch { /* Apply for this visit. */ }
-  applyTheme();
-});
-systemTheme.addEventListener('change', applyTheme);
-applyTheme();
-
 document.querySelector('#year').textContent = new Date().getFullYear();
 
 const files = import.meta.glob('../posts/*.md', {

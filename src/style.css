@@ -42,21 +42,7 @@ img{display:block;max-width:100%;height:auto}
 .skip-link{background:var(--surface);color:var(--text);z-index:20}
 @media(max-width:700px){.post{grid-template-columns:minmax(0,1fr);padding:18px;gap:20px}.post-art{min-height:160px}.section-heading{flex-wrap:wrap}.reading-view{padding-top:20px}html{scroll-padding-top:105px}}
 @media(prefers-color-scheme:dark){
-  :root:not([data-theme]){color-scheme:dark;--green:#89b7ff;--muted:#adbdd3;--line:#30425b;--page:#111c2d;--surface:#1b2a40;--text:#e5edf9;--soft:#243b5c;--shadow:0 5px 22px rgb(0 0 0 / 16%)}
-  :root:not([data-theme]) .art-notes{background:#2d3557;color:#b6c6ff}
-  :root:not([data-theme]) .sun{color:#5689d0}
+  :root{--green:#89b7ff;--muted:#adbdd3;--line:#30425b;--page:#111c2d;--surface:#1b2a40;--text:#e5edf9;--soft:#243b5c;--shadow:0 5px 22px rgb(0 0 0 / 16%)}
+  .art-notes{background:#2d3557;color:#b6c6ff}
+  .sun{color:#5689d0}
 }
-:root[data-theme="light"]{color-scheme:light}
-:root[data-theme="dark"]{color-scheme:dark;--green:#89b7ff;--muted:#adbdd3;--line:#30425b;--page:#111c2d;--surface:#1b2a40;--text:#e5edf9;--soft:#243b5c;--shadow:0 5px 22px rgb(0 0 0 / 16%)}
-:root[data-theme="dark"] .art-notes{background:#2d3557;color:#b6c6ff}
-:root[data-theme="dark"] .sun{color:#5689d0}
-:root[data-theme="paper"]{color-scheme:light;--green:#a34820;--muted:#75604d;--line:#d9c7aa;--page:#f5ecd9;--surface:#fff6e5;--text:#443022;--soft:#efddbd;--shadow:0 5px 22px rgb(83 49 24 / 8%)}
-:root[data-theme="paper"] :is(h1,h2,h3){font-family:'Lora',Georgia,serif}
-:root[data-theme="paper"] .art-notes{background:#ead4b6;color:#8c4729}
-:root[data-theme="paper"] .sun{color:#ba6636}
-.theme-controls{display:flex;align-items:center;gap:10px;font-size:12px}
-#theme-toggle{font:inherit;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 12px;cursor:pointer}
-#theme-toggle:hover{border-color:var(--green)}
-#theme-toggle:focus-visible{outline:2px solid var(--green);outline-offset:3px}
-#theme-status{color:var(--muted);min-width:48px}
-@media(max-width:700px){.site-header{flex-wrap:wrap;padding-block:16px;gap:12px}.theme-controls{width:100%;justify-content:flex-end}html{scroll-padding-top:160px}}
